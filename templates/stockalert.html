@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Stock Alert</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href= "{{url_for('static',filename='css/material-design.min.css')}}">
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+		<style>
+			select.form-control {
+				width: 145px !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					<div class="alert alert-secondary" role="alert">
+						{{ message }}
+					</div>
+				{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
+
+		<div class="wrapper">
+			<div class="inner">
+				<form action="#" method="POST">
+					<h3>Subscribe to a Stock</h3>
+					<div class="form-wrapper">
+						<label for="symbol" class="label-input">Stock Symbol</label>
+						<input type="text" class="form-control" name="symbol" placeholder = "stock symbol in all caps" required>
+					</div>
+					<div class="form-wrapper form-select">
+						<label for="contact_type">Contact Type</label>
+						<div class="form-holder">
+							<select name="contact_type" id="" class="form-control" required>
+								<option value="e" class="option">Email</option>
+								<option value="s" class="option">SMS</option>
+							</select>
+							<i class="zmdi zmdi-chevron-down"></i>
+						</div>
+					</div>
+					<div class="form-wrapper">
+						<label for="contact_info" class="label-input">Contact Info</label>
+						<input type="text" class="form-control" name="contact_info" placeholder= "Email/Number" required>
+					</div>
+					<div class="form-wrapper">
+						<label for="upper" class="label-input">Upper Limit</label>
+						<input type="number" class="form-control" name="upper" placeholder="Upper Limit" required>
+					</div>
+					<div class="form-wrapper">
+						<label for="lower" class="label-input">Lower Limit</label>
+						<input type="number" class="form-control" name="lower" placeholder="Lower Limit" required>
+					</div>
+					<div class="form-wrapper form-select">
+						<label for="frequency">Frequency of price check</label>
+						<div class="form-holder">
+							<select name="frequency" id="" class="form-control" required>
+								<option value="1" class="option">Hour</option>
+								<option value="24" class="option">Day</option>
+								<option value="168" class="option">Week</option>
+								<option value="720" class="option">Month</option>
+							</select>
+							<i class="zmdi zmdi-chevron-down"></i>
+						</div>
+					</div>
+					<button type="submitc">Subscribe</button>
+				</form>
+				<div class="image-holder">
+					<img src="{{url_for('static',filename='image/stock.jpg')}}" alt="" >
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Alert</title>
+</head>
+<body>
+    <form action="#" method="POST">
+        stock symbol :<input type = "text" name = "symbol" ><br>
+        notify on:  <select name="contact_type" >
+                        <option value="e">Email</option>
+                        <option value="s">SMS</option>
+                    </select><br>
+        contact_info : <input type = "text" name="contact_info"><br>
+        upper limit : <input type = "number" name="upper"><br>
+        lower limit : <input type = "number" name="lower"><br>
+        check every :<select name="frequency" ><br>
+                        <option value="1">Hour</option>
+                        <option value="24">Day</option>
+                        <option value="168">Week</option>
+                        <option value="720">Month</option>
+                    </select>
+        <input type="submit">
+    </form>
+</body>
+</html> -->
