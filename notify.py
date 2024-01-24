@@ -39,9 +39,7 @@ def sendNotification(contact_info,contact_type,symbol):
     if contact_type == 'e':
         server = smtplib.SMTP('smtp.gmail.com',587)
         server.starttls()
-        # server.login('samratsiddhi0@gmail.com','misndnnbzvqaembo')
         server.login(globals()['sender_email'],globals()['sender_password'])
-        # server.sendmail('samratsiddhi0@gmail.com',contact_info,message)
         server.sendmail(globals()['sender_email'],contact_info,message)
     else:
         sid = globals()['user_sid']
